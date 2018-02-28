@@ -9,54 +9,42 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import bsh.Interpreter;
+
 public class MainActivity extends AppCompatActivity {
 
-    final static String MUL = "*";
-    private static  int count = 0;
     private TextView t_res;
-    private TextView t_sym;
-    private EditText edt_first, edt_second;
+    private String operation_text = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         t_res = findViewById(R.id.txt_res);
-        t_sym = findViewById(R.id.txt_sym);
-
-        edt_first= findViewById(R.id.edt_firstNum);
-        edt_second = findViewById(R.id.edt_secondNum);
+        t_res.setText(operation_text);
 
     }
 
     public void btnClick(View v){
-        int  id  = v.getId();
-        double res =0.0;
-        switch (id){
-            case R.id.btn_eql:
-                String sym = t_sym.getText().toString();
-                double firstVal = Double.parseDouble(edt_first.getText().toString());
-                double secondVal =  Double.parseDouble(edt_second.getText().toString());
+        Button b = (Button)v;
+        String val = b.getText().toString();
+        operation_text +=  val;
+        t_res.setText(operation_text);
 
-                if(sym.equals("SYM"))
-                    Toast.makeText(this, "You have to specify op.", Toast.LENGTH_LONG).show();
-                else if(sym.equals(MUL)){
-                    res = firstVal*secondVal;
-                }
-                break;
-            case R.id.btn_div:
-                t_sym.setText("/");
-                break;
-            case R.id.btn_mul:
-                t_sym.setText(MUL);
-                break;
-            case R.id.btn_sub:
-                t_sym.setText("-");
-                break;
-            case R.id. btn_sum:
-                t_sym.setText("+");
-                break;
+
+    }
+
+    public void btnEqual(View view) {
+        Interpreter interpreter = new Interpreter();
+        try {
+            interpreter.eval("result = "+ operation_text);
+            t_res.setText(interpreter.get("result").toString());
+            operation_text="";
+        }
+        catch (Exception e){
+            t_res.setText("Syntax error!");
+            operation_text="";
+
         }
 
-        t_res.setText(res + "");
     }
 }
