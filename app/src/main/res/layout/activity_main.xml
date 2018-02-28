@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.asus.gl.androidweek2.MainActivity">
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_sum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:onClick="btnClick"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/btn_sub"
+            android:onClick="btnClick"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/btn_mul"
+            android:onClick="btnClick"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:onClick="btnClick"
+            android:id="@+id/btn_div"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="0dp"
+            android:id="@+id/edt_firstNum"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Enter first num"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SYM"
+            android:id="@+id/txt_sym"
+            android:layout_margin="2dp"
+            />
+
+        <EditText
+            android:id="@+id/edt_secondNum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Enter second num" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="="
+        android:onClick="btnClick"
+        android:id="@+id/btn_eql"/>
+
+    <TextView
+        android:id="@+id/txt_res"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="0.0"
+        android:gravity="bottom|right"
+        android:textSize="30dp"/>
+
+
+
+
+
+
+</LinearLayout>
